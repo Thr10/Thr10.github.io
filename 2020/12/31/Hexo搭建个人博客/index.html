@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前言这应该是我的第一篇个人博客，秉承着“等准备好了在做，就永远开始不了”的经验，我就算草率开工了。这篇博客的内容应该不能算得上是个教学，内容是我 搭建写博客的环境 的整个过程。 HexoHexo是一个可以用 markdown 文档转换成静态 Html 页面的工具。它可以让我们执行几个命令就能做到这个转换过程，而且主题样式、导航、时间版权等信息都可以通过配置文件来直接映射到最终的Html页面上。所以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+Github_Pages搭建个人博客">
+<meta property="og:url" content="http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Youth Crew">
+<meta property="og:description" content="前言这应该是我的第一篇个人博客，秉承着“等准备好了在做，就永远开始不了”的经验，我就算草率开工了。这篇博客的内容应该不能算得上是个教学，内容是我 搭建写博客的环境 的整个过程。 HexoHexo是一个可以用 markdown 文档转换成静态 Html 页面的工具。它可以让我们执行几个命令就能做到这个转换过程，而且主题样式、导航、时间版权等信息都可以通过配置文件来直接映射到最终的Html页面上。所以">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-31T07:18:06.000Z">
+<meta property="article:modified_time" content="2021-01-19T05:01:32.445Z">
+<meta property="article:author" content="雷打野">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Hexo+Github_Pages搭建个人博客</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/01/12/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E5%8C%85/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&text=Hexo+Github_Pages搭建个人博客"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=Hexo+Github_Pages搭建个人博客"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo+Github_Pages搭建个人博客&body=Check out this article: http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&name=Hexo+Github_Pages搭建个人博客&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&t=Hexo+Github_Pages搭建个人博客"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo"><span class="toc-number">1.0.1.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub-Pages"><span class="toc-number">1.0.2.</span> <span class="toc-text">GitHub Pages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E7%94%A8-Hexo-GitHub-Pages"><span class="toc-number">1.0.3.</span> <span class="toc-text">为什么选用 Hexo + GitHub Pages</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">搭建过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%94%A8-Hexo-%E7%94%9F%E6%88%90-HTML"><span class="toc-number">2.1.</span> <span class="toc-text">第一步：用 Hexo 生成 HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%BD%BF%E7%94%A8Github-Pages%E5%90%AF%E5%8A%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%A8%E7%BA%BF%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.2.</span> <span class="toc-text">第二步：使用Github Pages启动自己的在线页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2%E5%88%B0%E7%BA%BF%E4%B8%8A%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text">第三步：将本地博客文件部署到线上仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%A4%87%E4%BB%BD"><span class="toc-number">2.4.</span> <span class="toc-text">第四步：备份</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">3.</span> <span class="toc-text">Q &amp; A</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-%E5%A6%82%E4%BD%95%E7%94%A8%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AAgitlab%E7%9A%84ssh%E9%92%A5%E5%8C%99%EF%BC%9F"><span class="toc-number">3.0.1.</span> <span class="toc-text">Q: 如何用一台电脑配置两个gitlab的ssh钥匙？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-GitHub%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%EF%BC%9F"><span class="toc-number">3.0.2.</span> <span class="toc-text">Q: GitHub连接不上？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-GitHub%E4%BB%93%E5%BA%93%E6%97%A0%E8%83%BD%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">Q: GitHub仓库无能推送代码?</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Hexo+Github_Pages搭建个人博客
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">雷打野</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-12-31T07:18:06.000Z" itemprop="datePublished">2020-12-31</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这应该是我的第一篇个人博客，秉承着“等准备好了在做，就永远开始不了”的经验，我就算草率开工了。这篇博客的内容应该不能算得上是个教学，内容是我 <em>搭建写博客的环境</em> 的整个过程。</p>
+<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h4><p>Hexo是一个可以用 markdown 文档转换成静态 Html 页面的工具。它可以让我们执行几个命令就能做到这个转换过程，而且主题样式、导航、时间版权等信息都可以通过配置文件来直接映射到最终的Html页面上。所以当我们想以 markdown 格式书写文档，并且想以html的方式上传到网上时，Hexo是一个很好的工具。</p>
+<h4 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h4><p>GitHub如果理解成是一个仓库，而当我们需要一个类似于 首页 来向访问者介绍我们仓库的大致内容时，GitHub官网提供了 GitHub Pages 让我们实现这个愿望。我们可以将一个静态页面托管到GitHub的服务器上，并且可以配置自己的域名映射。</p>
+<h4 id="为什么选用-Hexo-GitHub-Pages"><a href="#为什么选用-Hexo-GitHub-Pages" class="headerlink" title="为什么选用 Hexo + GitHub Pages"></a>为什么选用 Hexo + GitHub Pages</h4><p>稍加学习，便可以用markdown写出格式清晰，便于维护的文档，用 Hexo 实现将.md的文件转换成.html页面的过程，再将 Html页面 以GitHub Pages的方式托管到GitHub的服务器上，免去购买服务器的费用。</p>
+<hr>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="第一步：用-Hexo-生成-HTML"><a href="#第一步：用-Hexo-生成-HTML" class="headerlink" title="第一步：用 Hexo 生成 HTML"></a>第一步：用 Hexo 生成 HTML</h3><p>1.全局安装 Hexo<br><code>npm install hexo-cli -g</code></p>
+<p>2.验证安装是否成功<br><code>hexo -v</code></p>
+<p>3.这里可以新建一个文件夹使用 <code>hexo init</code> 的方式来初始化项目，默认使用https的方式下载脚手架代码库，而我这里配置访问github的端口是443 <em>（git方式，https好像是22）</em>，所以我到 hexo 代码库中直接通过git的方式拉取<br><code>git clone git@github.com:hexojs/hexo-starter.git</code></p>
+<p>4.进入脚手架文件夹, <code>npm install</code> 下载工具包， <code>hexo g</code><em>(hexo generate)</em> 生成Html文件， <code>hexo s</code><em>(hexo server)</em> 启动本地服务，便可以通过<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 来访问html文件。</p>
+<hr>
+<h3 id="第二步：使用Github-Pages启动自己的在线页面"><a href="#第二步：使用Github-Pages启动自己的在线页面" class="headerlink" title="第二步：使用Github Pages启动自己的在线页面"></a>第二步：使用Github Pages启动自己的在线页面</h3><p>1.新建一个代码库，名字为 <code>YourNickname.github.io</code> <em>(名字是一定的，名字对的情况下，UI会有弹框提示 You’ve discovered a secret…)</em></p>
+<p>2.设置需要添加readme.md文件 <em>(最开始的内容就是你的 readme 的内容，之后我们会拿自己的  html文件替换readme文件)</em></p>
+<p>3.代码库建成后，可以在该代码库的setting中查看自己介绍页的地址，<em>图片后续上传…</em></p>
+<hr>
+<h3 id="第三步：将本地博客文件部署到线上仓库"><a href="#第三步：将本地博客文件部署到线上仓库" class="headerlink" title="第三步：将本地博客文件部署到线上仓库"></a>第三步：将本地博客文件部署到线上仓库</h3><p>1.可以先添加一篇博客内容<br><code>hexp new post &quot;my first blog&quot;</code> <em>双引号中填写博客内容</em></p>
+<p>2.下载工具帮助我们完成上传 <em>（可以通过git将html、css、js…文件上传到github上，工具可以快速帮助我们完成部署）</em><br><code>npm i hexo-deployer-git</code></p>
+<p>3.修改 <code>_config.yml</code> 配置，连接线上仓库, repository 是自己的github仓库地址，branch 是对应的分之</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:Thr10&#x2F;Thr10.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+<p>4.执行 <code>hexo d</code> <em>(hexo deploy)</em> 将生成的静态页面部署到你的线上仓库</p>
+<hr>
+<h3 id="第四步：备份"><a href="#第四步：备份" class="headerlink" title="第四步：备份"></a>第四步：备份</h3><p>1.执行 <code>hexo d</code>，发现工具仅仅将生成的静态页面文件上传到了仓库中，如何备份整个代码库呢？</p>
+<p>2.首先在github 的该仓库下，新建一个分支，例如 hexo 分支。</p>
+<p>3.将该代码库拉取到本地，例如 <code>Thr10.github.io</code> ，将本地的Blog代码库中的 <code>_config.yml</code>、<code>themes/</code>、<code>source</code>、<code>scffolds/</code>、<code>package.json</code>、<code>gitignore</code>文件或者文件夹拷贝到 <code>Thr10.github.io</code> 中。*(Mac：<code>command</code> + <code>shift</code> + <code>.</code> 可以展示隐藏文件)*</p>
+<p>4.将 themes/themeName/ 下的 <code>.git/</code> 文件夹删除，否则无法 push 主题文件夹</p>
+<p>5.随后 <code>npm install</code>, <code>npm install hexo-deployer-git</code>, 新建分支，切换分支，关联远端hexo分支，<code>add .</code>, <code>commit</code>, <code>push</code>一系列常规git操作。</p>
+<p>6.在新的电脑上，拉取代码库，<code>npm install hexo-cli -g</code>, <code>npm install</code>, <code>npm install hexo-deployer-git</code>，新的环境就搭建好了。</p>
+<hr>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><h4 id="Q-如何用一台电脑配置两个gitlab的ssh钥匙？"><a href="#Q-如何用一台电脑配置两个gitlab的ssh钥匙？" class="headerlink" title="Q: 如何用一台电脑配置两个gitlab的ssh钥匙？"></a>Q: 如何用一台电脑配置两个gitlab的ssh钥匙？</h4><p>1.生成第二个key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;yourmail@mail.com&quot;</span><br></pre></td></tr></table></figure>
+<p>注意不要一直会车，否则会使用默认的路径，结果是覆盖之前生成的 key。这次要手动填写路径加以区分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;Gary&#x2F;.ssh&#x2F;id_rsa): &#x2F;c&#x2F;Users&#x2F;Gary&#x2F;.ssh&#x2F;id_rsa_github</span><br></pre></td></tr></table></figure>
+<p>结果会在 <code>~/.ssh</code> 目录下形成两套 key</p>
+<p>2.创建config文件<br>在 <code>~/.ssh</code> 目录下创建名为 <code>config</code> 的文件。内容入下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># gitee and github</span><br><span class="line"># 注意：多个Host公用一个公钥时，</span><br><span class="line"># 对应的HostName和Port必须跟在Host后面</span><br><span class="line">    Host gitee.com</span><br><span class="line">    HostName gitee.com</span><br><span class="line">    Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line"></span><br><span class="line"># gerrit</span><br><span class="line">    Host gerrit.awaimai.com</span><br><span class="line">    HostName gerrit.awaimai.com</span><br><span class="line">    Port 8000</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_gerrit</span><br><span class="line"></span><br><span class="line"># 其他的统一用id_rsa文件登陆，或者密码。</span><br><span class="line"># 注意：这里的第二行后面有个password，就是同时允许密码登陆</span><br><span class="line"># 不然第一次没加公钥，密码也登陆不了，会提示错误：Permission denied (publickey,password).</span><br><span class="line">    Host *</span><br><span class="line">    PreferredAuthentications publickey,password</span><br><span class="line">    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<p>其中，<code>Host</code>和<code>HostName</code>填写git服务器的域名。</p>
+<p><code>IdentityFile</code>指定私钥的路径。</p>
+<h4 id="Q-GitHub连接不上？"><a href="#Q-GitHub连接不上？" class="headerlink" title="Q: GitHub连接不上？"></a>Q: GitHub连接不上？</h4><p>使用命令 <code>ssh -T git@github.com</code> 来查看连接情况，可以在后边加<code>-v</code> 查看过程中具体报错以便调试</p>
+<p>报错<code>ssh: connect to host github.com port 22: Connection timed out</code><br>修改<code>config</code>连接github的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line"> Hostname ssh.github.com</span><br><span class="line"> Port 443</span><br></pre></td></tr></table></figure>
+<h4 id="Q-GitHub仓库无能推送代码"><a href="#Q-GitHub仓库无能推送代码" class="headerlink" title="Q: GitHub仓库无能推送代码?"></a>Q: GitHub仓库无能推送代码?</h4><p>如果能拉取代码，不能推送代码，可以在仓库中设置ssh-key</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hexo"><span class="toc-number">1.0.1.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub-Pages"><span class="toc-number">1.0.2.</span> <span class="toc-text">GitHub Pages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E7%94%A8-Hexo-GitHub-Pages"><span class="toc-number">1.0.3.</span> <span class="toc-text">为什么选用 Hexo + GitHub Pages</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">搭建过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%94%A8-Hexo-%E7%94%9F%E6%88%90-HTML"><span class="toc-number">2.1.</span> <span class="toc-text">第一步：用 Hexo 生成 HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E4%BD%BF%E7%94%A8Github-Pages%E5%90%AF%E5%8A%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%A8%E7%BA%BF%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.2.</span> <span class="toc-text">第二步：使用Github Pages启动自己的在线页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%B0%86%E6%9C%AC%E5%9C%B0%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E9%83%A8%E7%BD%B2%E5%88%B0%E7%BA%BF%E4%B8%8A%E4%BB%93%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text">第三步：将本地博客文件部署到线上仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%A4%87%E4%BB%BD"><span class="toc-number">2.4.</span> <span class="toc-text">第四步：备份</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">3.</span> <span class="toc-text">Q &amp; A</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-%E5%A6%82%E4%BD%95%E7%94%A8%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AAgitlab%E7%9A%84ssh%E9%92%A5%E5%8C%99%EF%BC%9F"><span class="toc-number">3.0.1.</span> <span class="toc-text">Q: 如何用一台电脑配置两个gitlab的ssh钥匙？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-GitHub%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%EF%BC%9F"><span class="toc-number">3.0.2.</span> <span class="toc-text">Q: GitHub连接不上？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-GitHub%E4%BB%93%E5%BA%93%E6%97%A0%E8%83%BD%E6%8E%A8%E9%80%81%E4%BB%A3%E7%A0%81"><span class="toc-number">3.0.3.</span> <span class="toc-text">Q: GitHub仓库无能推送代码?</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&text=Hexo+Github_Pages搭建个人博客"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=Hexo+Github_Pages搭建个人博客"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo+Github_Pages搭建个人博客&body=Check out this article: http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&title=Hexo+Github_Pages搭建个人博客"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&name=Hexo+Github_Pages搭建个人博客&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2020/12/31/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/&t=Hexo+Github_Pages搭建个人博客"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    雷打野
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

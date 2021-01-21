@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="前言这是一篇学习Ts的学习笔记，是片段式的，弱逻辑连接的草稿内容，如果你想通过这篇blog学习Ts的知识，那应该是走错地方了。 过程Typescript 究竟是什么？ 动态类型语言（Dynamically Typed Language）:在运行时做变量类型检查的语言，编写代码时不用进行类型设置，Js python ruby 静态类型语言（Statically Typed Language）:在编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Typescript">
+<meta property="og:url" content="http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/index.html">
+<meta property="og:site_name" content="Youth Crew">
+<meta property="og:description" content="前言这是一篇学习Ts的学习笔记，是片段式的，弱逻辑连接的草稿内容，如果你想通过这篇blog学习Ts的知识，那应该是走错地方了。 过程Typescript 究竟是什么？ 动态类型语言（Dynamically Typed Language）:在运行时做变量类型检查的语言，编写代码时不用进行类型设置，Js python ruby 静态类型语言（Statically Typed Language）:在编译">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-20T06:57:37.000Z">
+<meta property="article:modified_time" content="2021-01-21T11:49:43.031Z">
+<meta property="article:author" content="雷打野">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>初识Typescript</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/01/20/Webpack%E7%BB%8F%E9%AA%8C/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2021/01/12/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E5%8C%85/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&text=初识Typescript"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&is_video=false&description=初识Typescript"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=初识Typescript&body=Check out this article: http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&name=初识Typescript&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&t=初识Typescript"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Typescript-%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">Typescript 究竟是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ts-%E4%BC%98%E5%8A%BF"><span class="toc-number">2.0.2.</span> <span class="toc-text">Ts 优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%9D%E5%A7%8B-Typescript"><span class="toc-number">2.0.3.</span> <span class="toc-text">安装和初始 Typescript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.4.</span> <span class="toc-text">基础类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#any%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.5.</span> <span class="toc-text">any类型和联合类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Array-%E5%92%8C-Tuple"><span class="toc-number">2.0.6.</span> <span class="toc-text">Array 和 Tuple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#interface"><span class="toc-number">2.0.7.</span> <span class="toc-text">interface</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-number">2.0.8.</span> <span class="toc-text">函数和类型推断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Class"><span class="toc-number">2.0.9.</span> <span class="toc-text">Class</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        初识Typescript
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">雷打野</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-01-20T06:57:37.000Z" itemprop="datePublished">2021-01-20</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是一篇学习Ts的学习笔记，是片段式的，弱逻辑连接的草稿内容，如果你想通过这篇blog学习Ts的知识，那应该是走错地方了。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h4 id="Typescript-究竟是什么？"><a href="#Typescript-究竟是什么？" class="headerlink" title="Typescript 究竟是什么？"></a>Typescript 究竟是什么？</h4><ul>
+<li>动态类型语言（Dynamically Typed Language）:在运行时做变量类型检查的语言，编写代码时不用进行类型设置，Js python ruby</li>
+<li>静态类型语言（Statically Typed Language）:在编译时做类型检查，编写代码时需要设置变量的类型，C C++ java</li>
+</ul>
+<p>Typescript: 将不关注变量类型的 动态类型语言，变成关注类型的静态类型语言。<br>Javascript that scales(JS的超集合)，给JS提供静态类型风格的类型系统，从es6到es10甚至esnext的语法支持。</p>
+<h4 id="Ts-优势"><a href="#Ts-优势" class="headerlink" title="Ts 优势"></a>Ts 优势</h4><ul>
+<li>方法或者模块增加输入输出的类型，外部条件，来增加代码可读性，减少代码bug, 省去一些原本需要手动调试的问题(动态语言约束)</li>
+<li>包容性： 完全兼容 Js ，第三方库不是必须使用TS编写也可以使用，可以单独编写定义的类型文件来读取</li>
+<li>流行库都支持TS，Typescript-React Vue Angular AntD等</li>
+</ul>
+<h4 id="安装和初始-Typescript"><a href="#安装和初始-Typescript" class="headerlink" title="安装和初始 Typescript"></a>安装和初始 Typescript</h4><p><code>npm install -g typescript</code> 全局安装 TS, <code>tsc -v</code> 查看ts版本, (tsc: Tpye Script Compiler)<br>新建hellow.ts文件，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const hello &#x3D; (name: string) &#x3D;&gt; &#123;</span><br><span class="line">    return &#96;hello $&#123;name&#125;&#96;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">hello(&#39;wild Lei&#39;) </span><br></pre></td></tr></table></figure>
+<p>tsc hellow.ts 可以得到编译后的Js文件，因为规定传入的变量的类型为<code>string</code>, 倘若<code>hello</code>函数执行的时候，传入是个number，代码编辑器(Vscode)会报错，正常情况下编译也会报错(和配置有关)</p>
+<h4 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 布尔</span><br><span class="line">let isDone: boolean &#x3D; false;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; number</span><br><span class="line">let age: number &#x3D; 20;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; string, 模板字符串</span><br><span class="line">let firstName: string &#x3D; &#39;lei&#39;;</span><br><span class="line">let message: string &#x3D; &#96;Hellow, $&#123;firstName&#125;, age is $&#123;age&#125;&#96;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; undefined, null</span><br><span class="line">let u: undefined &#x3D; undefined;</span><br><span class="line">let n: null &#x3D; null;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; undefined, null是其他类型的子类型</span><br><span class="line">let num: number &#x3D; undefined;</span><br></pre></td></tr></table></figure>
+<h4 id="any类型和联合类型"><a href="#any类型和联合类型" class="headerlink" title="any类型和联合类型"></a>any类型和联合类型</h4><p>当面对用户输入，或者通过API输入的数据无法确定类型时，就引入了any类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let notSure: any &#x3D; 4;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 赋值成其他类型</span><br><span class="line">notSure &#x3D; &#39;maybe it is a string&#39;;</span><br><span class="line">notSure &#x3D; true;</span><br><span class="line">&#x2F;&#x2F; 即便是调用方法和属性也可以</span><br><span class="line">notSure.myName</span><br><span class="line">notSure.getName()</span><br></pre></td></tr></table></figure>
+<p>虽然宽泛了约束条件，但是一定程度上失去了Ts的功能，当不想如此宽泛且又不针对一种类型时，就可以使用联合类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let numberOrString: number | string &#x3D; 234;</span><br><span class="line">numberOrString &#x3D; &#39;321&#39;;</span><br></pre></td></tr></table></figure>
+<h4 id="Array-和-Tuple"><a href="#Array-和-Tuple" class="headerlink" title="Array 和 Tuple"></a>Array 和 Tuple</h4><p>定义一个只包含数字的数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let arrOfNumbers: number[] &#x3D; [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p>如何在这个数组中加入string类型，或者其他类型的变量，编辑器会飘红<br>Array的push方法也会做相应的类型检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arrOfNumbers.push(5);  &#x2F;&#x2F; 正常</span><br><span class="line">arrOfNumbers.push(&#39;5&#39;); &#x2F;&#x2F; 飘红</span><br></pre></td></tr></table></figure>
+<p>类数组: 例如函数里面的内置变量 arguments, 如果用数组类型来接收， 会报错，需要使用其他特定的类型(HtmlCollection, NodeList等)，后续跟进</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    console.log(arguments); &#x2F;&#x2F; arguments 是 类数组</span><br><span class="line">    &#x2F;* 类数组 具备一定数组的属性，但是很多方法也没有 *&#x2F;</span><br><span class="line">    &#x2F;* 例如length方法可以使用， 下标查询可以使用， 而 forEach 和 map 方法不可使用*&#x2F;</span><br><span class="line">    </span><br><span class="line">    let arr: any[] &#x3D; arguments; &#x2F;&#x2F; 会报错</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当数组内元素类型不确定时，会使用any，而当有一定约束的时候，例如我希望第一项是 number, 第二项是 string，目前的知识就很难办到, 需要引入 Tuple 元组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let user: [string, number] &#x3D; [&#39;viking&#39;, 1];</span><br></pre></td></tr></table></figure>
+<h4 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h4><p>变量、数组之后，剩下了对象，interface可以用来约束对象的属性，对类(class)进行抽象</p>
+<ul>
+<li>todo: Duck Typing(鸭子类型) 和 interface 有何种关系呢？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">    name: string; &#x2F;&#x2F; 注意分割用分号</span><br><span class="line">    age: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let lei: Person &#x3D; &#123;</span><br><span class="line">    name: &#39;lei&#39;,</span><br><span class="line">    age: 20</span><br><span class="line">&#125; &#x2F;&#x2F; 无论多余或者缺少的属性，都会引起报错</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果一个属性是可选项，可以在定义interface时，在该属性名后跟 <code>?</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age?: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let lei: Person &#x3D; &#123;</span><br><span class="line">    name: &#39;lei&#39;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以设置只读属性<br>interface Person {<br>    readonly id: number;<br>    name: string;<br>    age: number;<br>}</p>
+<p>let lei: Person = {<br>    id: 123,<br>    name: ‘lei’,<br>    age: 20<br>}<br>lei.id = 321 // 报错<br>除此之外 interface 也可以用来描述类，函数，数组等</p>
+<h4 id="函数和类型推断"><a href="#函数和类型推断" class="headerlink" title="函数和类型推断"></a>函数和类型推断</h4><ul>
+<li>函数声明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; x, y都为number 返回也为number</span><br><span class="line">function add(x: number, y: number): number &#123;</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>参数可选<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; z为可选</span><br><span class="line">function add(x: number, y: number, z?: number): number &#123;</span><br><span class="line">     if (typeof z &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;</span><br><span class="line">        return x + y + z;</span><br><span class="line">    &#125;</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let result &#x3D; add(2, 3);</span><br></pre></td></tr></table></figure></li>
+<li>函数表达式, 以及赋值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const add &#x3D; function (x: number, y: number, z?: number): number &#123;</span><br><span class="line">    if (typeof z &#x3D;&#x3D;&#x3D; &#39;number&#39;) &#123;</span><br><span class="line">        return x + y + z;</span><br><span class="line">    &#125;</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 此时的 add 是函数类型, 且 add2 和 add 的函数输入输出类型一致</span><br><span class="line">const add2: (x: number, y: number, z?:number) &#x3D;&gt; number &#x3D; add</span><br></pre></td></tr></table></figure></li>
+<li>上面的 <code>add</code> 是没有定义类型的，而 <code>TS</code> 已经做了类型的推断，举一个 <code>string</code> 的例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str &#x3D; &#96;str&#96;;</span><br><span class="line">str &#x3D; 123 &#x2F;&#x2F; 报错 ts2322</span><br></pre></td></tr></table></figure>
+<h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Animal &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    constructor(name: string) &#123;</span><br><span class="line">        this.name &#x3D; name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    run() &#123;</span><br><span class="line">        return &#96;$&#123;this.name&#125; is running&#96;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const snake &#x3D; new Animal(&#39;lily&#39;)</span><br><span class="line">console.log(snake.run())</span><br></pre></td></tr></table></figure></li>
+<li>继承<br>class Dog extends Animal {<br>  bark() {<pre><code>  return `$&#123;this.name&#125; `</code></pre>
+  }<br>}<br>const xiaobao = new Dog(‘xiaobao’); // 继承了 name 属性<br>console.log(xiaobao.run()) // 继承了 run 方法<br>console.log(xiaobao.bark()) // 自建的 bark 方法</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Typescript-%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.0.1.</span> <span class="toc-text">Typescript 究竟是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ts-%E4%BC%98%E5%8A%BF"><span class="toc-number">2.0.2.</span> <span class="toc-text">Ts 优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%92%8C%E5%88%9D%E5%A7%8B-Typescript"><span class="toc-number">2.0.3.</span> <span class="toc-text">安装和初始 Typescript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.4.</span> <span class="toc-text">基础类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#any%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.0.5.</span> <span class="toc-text">any类型和联合类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Array-%E5%92%8C-Tuple"><span class="toc-number">2.0.6.</span> <span class="toc-text">Array 和 Tuple</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#interface"><span class="toc-number">2.0.7.</span> <span class="toc-text">interface</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%92%8C%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-number">2.0.8.</span> <span class="toc-text">函数和类型推断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Class"><span class="toc-number">2.0.9.</span> <span class="toc-text">Class</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&text=初识Typescript"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&is_video=false&description=初识Typescript"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=初识Typescript&body=Check out this article: http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&title=初识Typescript"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&name=初识Typescript&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/01/20/%E5%88%9D%E8%AF%86Typescript/&t=初识Typescript"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    雷打野
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
