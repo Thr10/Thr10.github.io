@@ -198,6 +198,7 @@ console.log(snake.run())
 ``````
 
 + 继承
+``````
 class Dog extends Animal {
     bark() {
         return `${this.name} `
@@ -206,6 +207,79 @@ class Dog extends Animal {
 const xiaobao = new Dog('xiaobao'); // 继承了 name 属性
 console.log(xiaobao.run()) // 继承了 run 方法
 console.log(xiaobao.bark()) // 自建的 bark 方法
+``````
+
++ 重写
+``````
+class Cat extends Animal {
+    // constructor(name) {
+    //     super(name)
+    //     console.log(this.name)
+    // }
+    run() {
+       return 'Meow, ' + super.run() 
+    } 
+}
+
+const maomao = new Cat('maomao')
+console.log(maomao.run());
+``````
+
+#### Class 属性和方法的约束
++ Ts 提供三种访问修饰符 `public` `private` 
++ 所有属性和方法默认都是 `public`
+``````
+class Animal {
+    public name: string; // 显示的 标明 public
+    constructor(name: string) {
+        this.name = name
+    }
+    run() {
+        return `${this.name} is running`
+    }
+}
+const snake = new Animal('lili);
+snake.name = 'lucy'; // 可写
+console.log(snake.name); // lucy 可访问
+``````
++ 不想对外的属性可以用 `private` 修饰, 即便是子类也不可以访问
++ 如果想找一种介于 `public` ，`private` 之间的一种约束，可以使用 `protected`修饰符
+用 `protected`修饰符 修饰的属性，子类是可以访问的，而外部无法访问(父类，以及子类的实例)
+
++ 还有一种是只读属性，`readonly` 修饰符修饰
+
+目前为止讨论的是`实例`的方法和属性，对于类本身可以有可访问的属性和方法， 这时候需要使用`静态属性`和`静态方法`(`static` 修饰符)
+
+``````
+class Animal {
+    protected name: string;
+    static categoies: string[] = ['mammal', 'bird']; // 静态属性
+    static isAnimal(a) {
+        // 静态方法， 判断一个实例是否是 Animal 的子类
+        return a instanceof Animal
+    }
+    constructor(name: string) {
+        this.name = name
+    }
+    run() {
+        return `${this.name} is running`
+    }
+}
+console.log(Animal.categoies); // ['mammal', 'bird']
+console.log(Animal.isAnimal( new Animal(luby) )); // true
+``````
+
+##### 类和接口
+##### 枚举
+##### 泛型
+##### 类型别名和类型断言
+##### 声明文件
+
+
+
+
+
+
 
 
 
